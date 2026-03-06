@@ -1,0 +1,69 @@
+# Node.js / npm
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json          # optional: keep if you prefer lockfile consistency; remove if using pnpm/yarn
+yarn.lock                  # same as above
+
+# Build outputs
+dist/
+build/
+out/
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# Logs & temp files
+*.log
+*.log.*
+logs/
+tmp/
+temp/
+
+# Editor / OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing artifacts
+coverage/
+.nyc_output/
+test-results/
+playwright-report/
+playwright/.cache/
+
+# LangGraph / LangChain extras (if you add LangSmith or local checkpointers later)
+.langsmith/
+checkpoints/
+checkpoint-*.json          # if using JSON checkpointer for dev
+
+# Deployment / hosting ignores
+.vercel
+.nowignore
+.netlify
+.render
+fly.toml                   # if using Fly.io
+Dockerfile                 # ignore if you don't want auto-Docker in repo
+docker-compose.yml
+
+# Misc dev tools
+.turbo/
+.tscache/
+.eslintcache
+.prettiercache
+vite.config.ts.cache
+
+# Keep these out for public repo
+secrets/
+keys/
+credentials/
