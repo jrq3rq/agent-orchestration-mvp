@@ -4,7 +4,10 @@
   "description": "Standalone prototype to learn and test multi-agent workflows using **Grok + LangGraph.js**.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "tsx src/index.ts",
+    "dev:watch": "nodemon --exec 'tsx src/index.ts'",
+    "test": "vitest",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

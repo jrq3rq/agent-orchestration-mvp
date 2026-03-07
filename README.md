@@ -109,7 +109,10 @@ agent-orchestration-mvp/                      # Standalone prototype – learn m
 ├── .env.example                              # Template for .env – safe to commit
 ├── package.json                              # Dependencies & scripts
 ├── tsconfig.json                             # TypeScript settings (strict mode, ESM)
-├── nodemon.json                              # Optional: auto-reload config for dev
+├── vitest.config.ts                          # ← Add: Vitest config (globals, setup, timeout)
+├── .prettierrc                               # ← Add: Prettier config
+├── .eslintrc.json                            # ← Add: ESLint config
+├── LICENSE                                   # ← Add: MIT license
 ├── README.md                                 # Basic setup & run instructions
 └── .gitignore                                # Ignores node_modules, .env, etc.
 ```
