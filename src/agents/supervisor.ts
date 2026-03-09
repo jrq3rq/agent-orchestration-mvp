@@ -11,7 +11,10 @@ export async function supervisor(state: any) {
 
   const chain = supervisorPrompt.pipe(llm);
 
-  const response = await chain.invoke({ input: state.input });
+  const response = await chain.invoke({
+    input: state.input,
+    iterations: state.iterations || 0  // pass current count
+  });
 
   console.log("Grok response:", response.content);
 
@@ -19,18 +22,24 @@ export async function supervisor(state: any) {
 
   try {
     let content = response.content as string;
+    content = content.trim();
 
-    // Cleanup for Grok wrappers
+    if (content.startsWith('"') && content.endsWith('"')) content = content.slice(1, -1);
+    if (!content.startsWith('{')) content = '{' + content;
+    if (!content.endsWith('}')) content = content + '}';
+
     content = content
       .replace(/^\s*```json\s*/i, '')
       .replace(/\s*```$/i, '')
       .replace(/^json\s*/i, '')
+      .replace(/[\n\r\t]+/g, ' ')
+      .replace(/\s+/g, ' ')
       .trim();
 
     decision = JSON.parse(content);
     console.log("Parsed decision:", decision);
   } catch (e: unknown) {
-    console.error("Parse failed:", e instanceof Error ? e.message : String(e));
+    console.error("Parse error:", e instanceof Error ? e.message : String(e));
     console.error("Raw content:", response.content);
   }
 
@@ -38,5 +47,6 @@ export async function supervisor(state: any) {
     messages: state.messages.concat(response),
     history: state.history.concat(`Supervisor → ${decision.next}`),
     next: decision.next,
+    iterations: (state.iterations || 0) + 1,  // ← increment here
   };
 }
