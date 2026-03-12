@@ -1,4 +1,4 @@
-# Agent Orchestration MVP
+# Agent Orchestration
 
 Standalone prototype to learn and test multi-agent workflows using **Grok + LangGraph.js**.
 
@@ -70,6 +70,24 @@ npm run build   # Compile TypeScript (tsc)
 ---
 
 ### Structure
+
+```markdown
+Big Goal
+   ↓
+Decompose ──► many sub-tasks
+               │
+               ├─► parallel execution (fan-out)
+               │      ↓
+               └─► many outputs
+                      ↓
+                 Verify / Judge / Vote / Evaluate
+                      ↓
+            Good enough? ──Yes──► Done
+                      │
+                     No
+                      ↓
+           Refine plan + Iterate (re-decompose)
+```
 
 ```markdown
 agent-orchestration-mvp/                      # Standalone prototype – learn multi-agent orchestration with Grok
