@@ -23,6 +23,6 @@ export async function critic(state: any) {
     messages: state.messages.concat(response),
     history: state.history.concat("Critic completed"),
     results: state.results + `\nCritique: ${response.content}`,
-    iterations: (state.iterations || 0) + 1,  // ← increment here
+    // iterations: (state.iterations || 0) + 1,
   };
 }

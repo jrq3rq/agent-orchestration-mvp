@@ -13,7 +13,8 @@ export async function supervisor(state: any) {
 
   const response = await chain.invoke({
     input: state.input,
-    iterations: state.iterations || 0  // pass current count
+    iterations: state.iterations || 0,
+    results: state.results || "No results yet",
   });
 
   console.log("Grok response:", response.content);

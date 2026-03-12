@@ -18,6 +18,6 @@ export async function researcher(state: any) {
     messages: state.messages.concat(response),
     history: state.history.concat("Researcher completed"),
     results: (state.results || "") + `\nResearch: ${response.content}`,
-    iterations: (state.iterations || 0) + 1,  // ← increment here
+    // iterations: (state.iterations || 0) + 1,
   };
 }
